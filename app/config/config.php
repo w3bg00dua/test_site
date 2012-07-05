@@ -14,4 +14,10 @@ $config = new Phalcon_Config(array(
         'viewsDir' => '../app/views/',
         'baseUri' => '/php-site/public/'
     ),
+    /*'models' => array(
+	'metadata' => array(
+		'adapter' => 'Apc',
+		'lifetime' => 86400
+	)
+    )*/
 ));
