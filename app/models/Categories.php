@@ -1,6 +1,8 @@
 <?php
 
-class Categories extends Phalcon_Model_Base
+use Phalcon\Model\Base as Model;
+
+class Categories extends Model
 {
     /**
      * @var integer

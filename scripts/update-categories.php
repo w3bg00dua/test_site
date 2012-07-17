@@ -4,10 +4,10 @@ error_reporting(E_ALL);
 
 require 'app/config/config.php';
 
-$modelManager = new Phalcon_Model_Manager();
+$modelManager = new Phalcon\Model\Manager();
 $modelManager->setModelsDir(__DIR__.'/'.$config->phalcon->modelsDir);
 
-Phalcon_Db_Pool::setDefaultDescriptor($config->database);
+Phalcon\Db\Pool::setDefaultDescriptor($config->database);
 
 $categoriesCode = array();
 foreach (Categories::find() as $category) {

@@ -7,15 +7,15 @@ try {
     require __DIR__.'/../app/config/routes.php';
     require __DIR__.'/../vendor/loader.php';
 
-    Phalcon_Session::start();
+    Phalcon\Session::start();
 
-    $front = Phalcon_Controller_Front::getInstance();
+    $front = Phalcon\Controller\Front::getInstance();
 
     $front->setRouter($router);
     $front->setConfig($config);
 
     echo $front->dispatchLoop()->getContent();
 
-} catch (Phalcon_Exception $e) {
+} catch (Phalcon\Exception $e) {
     echo "PhalconException: ", $e->getMessage();
 }

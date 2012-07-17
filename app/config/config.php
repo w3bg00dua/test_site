@@ -1,23 +1,23 @@
 <?php
 
-$config = new Phalcon_Config(array(
+$config = new Phalcon\Config(array(
     'database' => array(
         'adapter' => 'mysql',
         'host' => 'localhost',
         'username' => 'root',
-        'password' => '',
+        'password' => 'hea101',
         'name' => 'php_site'
     ),
     'phalcon' => array(
         'controllersDir' => '../app/controllers/',
         'modelsDir' => '../app/models/',
         'viewsDir' => '../app/views/',
-        'baseUri' => '/php-site/public/'
+        'baseUri' => '/blahblah/'
     ),
-    /*'models' => array(
-	'metadata' => array(
-		'adapter' => 'Apc',
-		'lifetime' => 86400
-	)
-    )*/
+    'models' => array(
+        'metadata' => array(
+            'adapter' => 'Apc',
+    		'lifetime' => 86400
+        )
+    )
 ));

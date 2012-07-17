@@ -7898,10 +7898,10 @@ foreach(explode("<hr />", $str) as $entry){
 	}
 }
 
-$modelManager = new Phalcon_Model_Manager();
+$modelManager = new Phalcon\Model\Manager();
 $modelManager->setModelsDir(__DIR__.'/'.$config->phalcon->modelsDir);
 
-Phalcon_Db_Pool::setDefaultDescriptor($config->database);
+Phalcon\Db\Pool::setDefaultDescriptor($config->database);
 
 foreach($entries as $entry){
 

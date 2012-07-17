@@ -29,7 +29,7 @@ class NewsController extends ControllerBase
 
         $activeYear = $this->filter->sanitize($this->_getParam('year'), "int");
 
-        Phalcon_Tag::setTitle($new->title);
+        Phalcon\Tag::setTitle($new->title);
 
         $this->view->setVar("new", $new);
         $this->view->setVar("activeYear", $activeYear);
@@ -40,7 +40,7 @@ class NewsController extends ControllerBase
     {
         $activeYear = $this->filter->sanitize($this->_getParam('year'), "int");
 
-        Phalcon_Tag::setTitle('News');
+        Phalcon\Tag::setTitle('News');
 
         $this->view->setVar("news", News::find(array("year='$activeYear'", "order" => "published DESC")));
         $this->view->setVar("activeYear", $activeYear);
@@ -51,7 +51,7 @@ class NewsController extends ControllerBase
     {
         $tag = $this->filter->sanitize($tag, "alphanum");
 
-        Phalcon_Tag::setTitle('Tagged '.$tag);
+        Phalcon\Tag::setTitle('Tagged '.$tag);
 
         $category = Categories::findFirst("name='$tag'");
         if ($category == false) {

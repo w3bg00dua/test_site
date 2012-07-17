@@ -1,6 +1,6 @@
 <?php
 
-$router = new Phalcon_Router_Regex();
+$router = new Phalcon\Router\Regex();
 
 $router->add("/news/([0-9]{4})/([0-9]{2})/([a-z0-9\-]+)", array(
     'controller' => 'news',

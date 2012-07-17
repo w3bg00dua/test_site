@@ -80,13 +80,13 @@ abstract class UIElements
     /**
      * Builds header menu with left and right items
      *
-     * @param  Phalcon_View $view
-     * @param  Phalcon_Translate $translate
+     * @param  Phalcon\View $view
+     * @param  Phalcon\Translate $translate
      * @return string
      */
     public static function getMenu($view, $translate)
     {
-        $auth = Phalcon_Session::get('auth');
+        $auth = Phalcon\Session::get('auth');
         if ($auth) {
             self::$_headerMenu['pull-right']['session'] = array(
                 'caption' => 'Log Out',
@@ -111,7 +111,7 @@ abstract class UIElements
                      echo '<li class="special">';
                 }
                 if(isset($option['action'])){
-                    echo Phalcon_Tag::linkTo($controller.'/'.$option['action'], $translate[$option['caption']]);
+                    echo Phalcon\Tag::linkTo($controller.'/'.$option['action'], $translate[$option['caption']]);
                 } else {
                     if(isset($option['url'])){
                         echo '<a href="'.$option['url'].'">'.$translate[$option['caption']].'</a>';
@@ -135,13 +135,13 @@ abstract class UIElements
             } else {
                 echo '<li>';
             }
-            echo Phalcon_Tag::linkTo($option['controller'].'/'.$option['action'], $caption), '<li>';
+            echo Phalcon\Tag::linkTo($option['controller'].'/'.$option['action'], $caption), '<li>';
         }
         echo '</ul>';
     }
 
     public static function disclaimer($translate){
-        if(!Phalcon_Session::get('disclaimer')){
+        if(!Phalcon\Session::get('disclaimer')){
             echo '<div class="alert alert-info">
             <a class="close" data-dismiss="alert" href="#">×</a>
             ', $translate->_('disclaimer', array(
@@ -149,7 +149,7 @@ abstract class UIElements
                 'official' => '<a href="https://www.php.net">'.$translate['accessOf'].'</a>'
             )), '        
             </div>';
-            Phalcon_Session::set('disclaimer', true);
+            Phalcon\Session::set('disclaimer', true);
         }
     }
 }

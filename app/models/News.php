@@ -1,6 +1,8 @@
 <?php
 
-class News extends Phalcon_Model_Base
+use Phalcon\Model\Base as Model;
+
+class News extends Model
 {
     /**
      * @var integer
@@ -52,7 +54,7 @@ class News extends Phalcon_Model_Base
         $categories = array();
         foreach ($this->getNewsCategories() as $newCategory) {
             $category = $newCategory->getCategories();
-            $categories[] = Phalcon_Tag::linkTo('news/tagged/'.$category->name, $translate[$category->name]);
+            $categories[] = Phalcon\Tag::linkTo('news/tagged/'.$category->name, $translate[$category->name]);
         }
 
         return join(', ', $categories);
