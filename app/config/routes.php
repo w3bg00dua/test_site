@@ -1,12 +1,10 @@
 <?php
 
-$router = new Phalcon\Router\Regex();
+$router = new Phalcon\Mvc\Router();
 
-$router->add("/news/([0-9]{4})/([0-9]{2})/([a-z0-9\-]+)", array(
+$router->add("/news/{year:[0-9]+}/{month:[0-9]+}/{title:[a-zA-Z0-9\-]+}", array(
     'controller' => 'news',
-    'action' => 'show',
-    'year' => 1,
-    'title' => 3
+    'action' => 'show'
 ));
 
 $router->add("/news/([0-9]{4})", array(
@@ -15,10 +13,8 @@ $router->add("/news/([0-9]{4})", array(
     'year' => 1
 ));
 
-$router->add("/set-language/([a-z0-9\-]+)", array(
+$router->add("/set-language/{language:[a-z]+}", array(
     'controller' => 'index',
-    'action' => 'setLanguage',
-    'language' => 1
+    'action' => 'setLanguage'
 ));
 
-$router->handle();

@@ -1,8 +1,6 @@
 <?php
 
-use Phalcon\Model\Base as Model;
-
-class NewsCategories extends Model
+class NewsCategories extends \Phalcon\Mvc\Model
 {
     /**
      * @var integer

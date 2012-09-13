@@ -9,10 +9,11 @@ $config = new Phalcon\Config(array(
         'name' => 'php_site'
     ),
     'phalcon' => array(
-        'controllersDir' => '../app/controllers/',
-        'modelsDir' => '../app/models/',
-        'viewsDir' => '../app/views/',
-        'baseUri' => '/blahblah/'
+        'controllersDir' => '/../app/controllers/',
+        'modelsDir' => '/../app/models/',
+        'libraryDir' => '/../app/library/',
+        'viewsDir' => '/../app/views/',
+        'baseUri' => '/php-site/'
     ),
     'models' => array(
         'metadata' => array(

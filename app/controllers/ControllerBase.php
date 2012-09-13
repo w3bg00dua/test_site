@@ -1,13 +1,13 @@
 <?php
 
-class ControllerBase extends Phalcon\Controller
+class ControllerBase extends Phalcon\Mvc\Controller
 {
     protected function _getTransPath()
     {
         $translationPath = '../app/messages/';
-        $language = Phalcon\Session::get("language");
+        $language = $this->session->get("language");
         if (!$language) {
-            Phalcon\Session::set("language", "en");
+            $this->session->set("language", "en");
         }
         if ($language === 'es' || $language === 'en') {
             return $translationPath.$language;
@@ -25,7 +25,7 @@ class ControllerBase extends Phalcon\Controller
         require $translationPath."/main.php";
 
         //Return a translation object
-        $mainTranslate = new Phalcon\Translate("Array", array(
+        $mainTranslate = new Phalcon\Translate\Adapter\NativeArray(array(
             "content" => $messages
         ));
 
@@ -42,7 +42,7 @@ class ControllerBase extends Phalcon\Controller
         require $translationPath.'/'.$transFile.'.php';
 
         //Return a translation object
-        $controllerTranslate = new Phalcon\Translate("Array", array(
+        $controllerTranslate = new Phalcon\Translate\Adapter\NativeArray(array(
             "content" => $messages
         ));
 
