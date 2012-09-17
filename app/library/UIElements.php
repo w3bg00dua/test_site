@@ -7,7 +7,7 @@
  */
 abstract class UIElements
 {
-    private static $_headerMenu = array(        
+    private static $_headerMenu = array(
         'pull-left' => array(
             'index' => array(
                 'caption' => 'home',
@@ -86,7 +86,8 @@ abstract class UIElements
      */
     public static function getMenu($view, $translate)
     {
-        $auth = Phalcon\Session::get('auth');
+        //$auth = Phalcon\Session::get('auth');
+        $auth = false;
         if ($auth) {
             self::$_headerMenu['pull-right']['session'] = array(
                 'caption' => 'Log Out',
@@ -97,7 +98,7 @@ abstract class UIElements
         }
 
         echo '<div class="nav-collapse">';
-        $controllerName = $view->getControllerName();
+        $controllerName = $view->dispatcher->getControllerName();
         foreach (self::$_headerMenu as $position => $menu) {
             echo '<ul class="nav ', $position, '">';
             foreach ($menu as $controller => $option) {
@@ -126,8 +127,8 @@ abstract class UIElements
 
     public static function getTabs($view)
     {
-        $controllerName = $view->getControllerName();
-        $actionName = $view->getActionName();
+        $controllerName = $view->dispatcher->getControllerName();
+        $actionName = $view->dispatcher->getActionName();
         echo '<ul class="nav nav-tabs">';
         foreach (self::$_tabs as $caption => $option) {
             if ($option['controller'] == $controllerName && ($option['action'] == $actionName || $option['any'])) {
@@ -141,15 +142,15 @@ abstract class UIElements
     }
 
     public static function disclaimer($translate){
-        if(!Phalcon\Session::get('disclaimer')){
+        /*if(!Phalcon\Session::get('disclaimer')){
             echo '<div class="alert alert-info">
             <a class="close" data-dismiss="alert" href="#">×</a>
             ', $translate->_('disclaimer', array(
                 'framework' => '<a href="http://phalconphp.com">Phalcon PHP Framework</a>',
                 'official' => '<a href="https://www.php.net">'.$translate['accessOf'].'</a>'
-            )), '        
+            )), '
             </div>';
             Phalcon\Session::set('disclaimer', true);
-        }
+        }*/
     }
 }

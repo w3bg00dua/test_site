@@ -12,7 +12,7 @@ class IndexController extends ControllerBase
 
     public function indexAction()
     {
-        $language = Phalcon\Session::get('language');
+        $language = $this->session->get('language');
         $news = News::find(array("language='$language'", "limit" => 5, "order" => "published desc"));
         if (count($news) === 0) {
             $news = News::find(array("language='en'", "limit" => 5, "order" => "published desc"));
@@ -26,7 +26,7 @@ class IndexController extends ControllerBase
     {
         //Change the language, reload translations if needed
         if ($language == 'en' || $language == 'es') {
-            Phalcon\Session::set('language', $language);
+            $this->session->set('language', $language);
             $this->loadMainTrans();
             $this->loadCustomTrans('index');
         }
@@ -36,7 +36,7 @@ class IndexController extends ControllerBase
         if (strpos($referer, $this->request->getHttpHost()."/")!==false) {
             return $this->response->setHeader("Location", $referer);
         } else {
-            return $this->_forward("index/index");
+            return $this->dispatcher->forward(array('controller' => 'index', 'action' => 'index'));
         }
     }
 }

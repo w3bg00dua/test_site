@@ -10,12 +10,12 @@ class NewsController extends ControllerBase
 
     public function index()
     {
-        return $this->_forward('index/index');
+        return $this->dispatcher->forward(array('controller' => 'index', 'action' => 'index'));
     }
 
     private function _getSanizitedTitleId()
     {
-        return preg_replace('/[^a-z0-9\-]/', '', $this->_getParam('title'));
+        return preg_replace('/[^a-z0-9\-]/', '', $this->dispatcher->getParam('title'));
     }
 
     public function showAction()
@@ -24,10 +24,11 @@ class NewsController extends ControllerBase
 
         $new = News::findFirst("short_title='$title'");
         if ($new == false) {
-            return $this->_forward('index/index');
+            $this->flash->error('The post cannot be found');
+            return $this->dispatcher->forward(array('controller' => 'index', 'action' => 'index'));
         }
 
-        $activeYear = $this->filter->sanitize($this->_getParam('year'), "int");
+        $activeYear = $this->filter->sanitize($this->dispatcher->getParam('year'), "int");
 
         Phalcon\Tag::setTitle($new->title);
 
@@ -38,7 +39,7 @@ class NewsController extends ControllerBase
 
     public function showYearAction()
     {
-        $activeYear = $this->filter->sanitize($this->_getParam('year'), "int");
+        $activeYear = $this->filter->sanitize($this->dispatcher->getParam('year'), "int");
 
         Phalcon\Tag::setTitle('News');
 
@@ -55,7 +56,7 @@ class NewsController extends ControllerBase
 
         $category = Categories::findFirst("name='$tag'");
         if ($category == false) {
-            return $this->_forward('index/index');
+            return $this->dispatcher->forward(array('controller' => 'index', 'action' => 'index'));
         }
 
         $news = array();

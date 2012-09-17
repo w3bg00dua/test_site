@@ -4,8 +4,8 @@ body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 13px;
     font-weight: normal;
-    line-height: 20px;  
-    background: #fafafa;  
+    line-height: 20px;
+    background: #fafafa;
 }
 
 li {
@@ -62,7 +62,7 @@ input, textarea, select, .uneditable-input {
     min-height: 30px;
 }
 
-.navbar-search .search-query {    
+.navbar-search .search-query {
     background-color: #fafafa;
     border: 1px solid #151515;
     margin-top: 5px;
@@ -72,9 +72,9 @@ input, textarea, select, .uneditable-input {
     color: #c0c0c0;
 }
 
-.navbar .nav .active > a, .navbar .nav .active > a:hover {    
+.navbar .nav .active > a, .navbar .nav .active > a:hover {
     background-color: #28283E;
-    background-image: -moz-linear-gradient(center top , #28283E, #45456B);    
+    background-image: -moz-linear-gradient(center top , #28283E, #45456B);
     background-image: -webkit-linear-gradient(top, #28283E, #45456B);
     background-image: -o-linear-gradient(top, #28283E, #45456B);
     filter: progid:dximagetransform.microsoft.gradient(startColorstr='#28283E', endColorstr='#45456B', GradientType=0);
@@ -83,8 +83,8 @@ input, textarea, select, .uneditable-input {
     padding-left: 7px;
 }
 
-.navbar .nav .special > a, .navbar .nav .special > a:hover {    
-    background: #4C4D77;    
+.navbar .nav .special > a, .navbar .nav .special > a:hover {
+    background: #4C4D77;
     border-radius: 5px;
     padding-right: 7px;
     padding-left: 7px;
@@ -106,7 +106,7 @@ article img {
 
 h2 a,
 h3 a {
-    color: #333333;    
+    color: #333333;
 }
 
 article h2 a:hover {
@@ -202,7 +202,8 @@ div.short-panel h3 {
 }
 
 .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
-    width: 940px;
+    /*width: 900px;*/
+    margin-left: 70px;
 }
 
 p.center {
@@ -217,7 +218,7 @@ div.release {
 }
 
 footer {
-    background-color: #333333;    
+    background-color: #333333;
     padding: 10px;
     color: #CCCCCC;
     min-height: 60px;
