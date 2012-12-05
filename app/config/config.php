@@ -4,8 +4,8 @@ $config = new Phalcon\Config(array(
     'database' => array(
         'adapter' => 'mysql',
         'host' => 'localhost',
-        'username' => 'root',
-        'password' => 'hea101',
+        'username' => 'phalcon',
+        'password' => 'secret',
         'name' => 'php_site'
     ),
     'phalcon' => array(
