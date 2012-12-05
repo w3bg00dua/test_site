@@ -53,6 +53,23 @@ try {
 		return $view;
 	});
 
+	//Set the views cache service
+	$di->set('viewCache', function(){
+
+	    //Cache data for one day by default
+	    $frontCache = new Phalcon\Cache\Frontend\Output(array(
+	        "lifetime" => 86400
+	    ));
+
+	    //File backend settings
+	    $cache = new Phalcon\Cache\Backend\File($frontCache, array(
+	        "cacheDir" => __DIR__."/../app/cache/",
+	        "prefix" => "php"
+	    ));
+
+    	return $cache;
+	});
+
 	/**
 	 * Database connection is created based in the parameters defined in the configuration file
 	 */

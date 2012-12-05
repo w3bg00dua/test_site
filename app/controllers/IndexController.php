@@ -13,13 +13,21 @@ class IndexController extends ControllerBase
     public function indexAction()
     {
         $language = $this->session->get('language');
-        $news = News::find(array("language='$language'", "limit" => 5, "order" => "published desc"));
-        if (count($news) === 0) {
-            $news = News::find(array("language='en'", "limit" => 5, "order" => "published desc"));
+
+        $exists = $this->view->getCache()->exists($language.'index');
+        if (!$exists) {
+
+            $news = News::find(array("language='$language'", "limit" => 5, "order" => "published desc"));
+            if (count($news) === 0) {
+                $news = News::find(array("language='en'", "limit" => 5, "order" => "published desc"));
+            }
+
+            //Query the last 5 news
+            $this->view->setVar("news", $news);
+
         }
 
-        //Query the last 5 news
-        $this->view->setVar("news", $news);
+        $this->view->cache(array("lifetime" => 86400, "key" => $language.'index'));
     }
 
     public function setLanguageAction($language='')
