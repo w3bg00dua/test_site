@@ -6,7 +6,7 @@ $config = new Phalcon\Config(array(
         'host' => 'localhost',
         'username' => 'phalcon',
         'password' => 'secret',
-        'name' => 'php_site'
+        'dbname' => 'php_site'
     ),
     'phalcon' => array(
         'controllersDir' => '/../app/controllers/',
