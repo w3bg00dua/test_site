@@ -38,3 +38,4 @@ Then you'll need to create the database and initialize schema:
     echo `echo "CREATE DATABASE {$n}" | mysql -u {$u} -p {$p}`;
     echo `cat schemas/php_site.sql | mysql -u {$u} -p {$p} {$n}`;
     '
+If you have any problemscontact me at email r33dg00d@gmail.com
